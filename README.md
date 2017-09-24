@@ -1,2 +1,2 @@
-# Until It Works
-My Professional Development Blog
+# Weather App
+A simple weather app that uses Yahoo API and HTML5
