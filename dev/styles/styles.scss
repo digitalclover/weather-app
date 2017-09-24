@@ -1,0 +1,101 @@
+@import 'variables';
+@import 'globals';
+
+#header{
+    margin-bottom: 1rem;
+    p{
+        margin: 0;
+    }
+}
+
+section{
+    display:none;
+    .main{
+        background:linear-gradient(135deg, transparentize($white, .9), transparentize($white,.7));
+        color:$black;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        h1{
+            color: $white;
+            font-size: 5rem;
+            font-weight: 100;
+            letter-spacing: -0.08em;
+            text-shadow: .02em .02em .03em transparentize($black,.9);
+            margin: 0;
+        }
+        h2{
+            color:$white;
+            font-weight: 500;
+            margin:0;
+            text-shadow: .02em .02em .03em transparentize($black,.9);
+        }
+    }
+    &#error{
+        p{
+            color:$white;
+        }
+    }
+    &#current{
+        .container{
+            position:relative;
+            width:90%;
+        }
+    }
+    &.visible{
+        display:block;
+        header, .main{
+            opacity: 0;
+            animation: slideFadeIn .2s ease-out forwards;
+        }
+        .main{
+            animation-delay: .1s;
+        }
+    }
+    &.hide{
+        display:block;
+        header, .main{
+            animation: slideFadeOut .2s ease-out forwards;
+        }
+        .main{
+            animation-delay: .1s;
+        }
+    }
+}
+
+#wind_direction{
+    display:inline-block;
+    width: 1em;
+    height: 1em;
+    position: relative;
+    top: 3px;
+    svg{
+        fill:$white;
+    }
+}
+
+#loading{
+    display:none;
+    width: 3em;
+    height: 3em;
+    margin:2rem auto;
+    @media screen and (min-width: 28em){
+        margin-left: 14em;
+    }
+    &.visible{
+        display:block;
+    }
+    svg{
+        fill: $white;
+        animation: spin 1s linear infinite;
+    }
+}
+
+#refresh{
+    display:block;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill:$white;
+    position:absolute;
+    top:0;
+    right:0;
+}

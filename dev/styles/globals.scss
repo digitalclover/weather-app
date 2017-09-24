@@ -1,0 +1,89 @@
+/* Base Font Size */
+body{
+    font-size: 5vw;
+    background:linear-gradient(135deg, $green, $blue);
+    background-attachment:fixed;
+    background-size: 100% 100%;
+    color:$white;
+    font-family:$sans-serif;
+    margin:0;
+    min-height: 100vh;
+    @media screen and (min-width:24em){
+        font-size:18px;
+    }
+}
+
+h1{
+    font-size: 2rem;
+    line-height: 1.1em; 
+    margin: 1em 0 0;
+}
+
+h2{
+    font-size: 1.5rem;
+    line-height: 1.2em;
+    margin: 1em 0 .5em;
+}
+
+p, ul, label, input, button{
+    font-size: 1rem;
+    line-height: 1.3em;
+}
+
+ul{
+    padding-left: 0;
+    list-style-type: none;
+    color:$white;
+    li{
+        position:relative;
+    }
+}
+
+a, a:visited{
+    color: $white;
+}
+
+form{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+label{
+    flex-basis: 100%;
+}
+
+input, button{
+    border-radius: .5em;
+    margin: .5em 0;
+    padding: .5em .75em;
+    border:none;
+    background: transparentize($white,.2);
+    font-size:1rem;
+    &::placeholder{
+        color:transparentize($purple,.5);
+    }
+    &:focus{
+        outline: none;
+    }
+}
+input{
+    flex-basis: 66%;
+}
+
+button{
+    background: $purple;
+    color:$white;
+    flex-basis: 25%;
+}
+
+section header, section .main, .container{
+    width: 90%;
+    display: block;
+    margin:0 auto;
+    @media (min-width: 28em){
+        width:100%;
+        max-width:24em;
+        margin-left: 5%;
+    }
+}

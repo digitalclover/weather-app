@@ -1,0 +1,51 @@
+<%- include('organisms/head') %>
+<%- include('organisms/header') %>
+
+<div id="search" class="container">
+    <form onsubmit="return weatherApp.requestWeather(this)" name="locationSearch">
+        <label for="query">Enter Your Location</label>
+        <input type="text" name="query" placeholder="City or Postal Code" required/>
+        <button type="button" onClick="weatherApp.requestWeather(document.locationSearch)">Search</button>
+    </form>
+</div>
+
+<div id="loading">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="357.857 457.735 20.286 20.265"><path class="cls-1" d="M19.643 9.857A9.653 9.653 0 0 0 11.429.315v2.544a7.143 7.143 0 1 1-2.857 0V.315a9.646 9.646 0 1 0 11.071 9.542z" transform="translate(358 458)"/></svg>
+</div>
+
+<section id="error">
+    <div class="main">
+        <div class="container">
+            <p class="req-error" data-model="res.error"></p>
+        </div>
+    </div>
+</section>
+
+<section id="current">
+    <header>
+        <h2> 
+            <span class="req-data" data-model="res.location.city"></span>,&nbsp;
+            <span class="req-data" data-model="res.location.region"></span>
+        </h2>
+    </header>
+    <div class="main">
+        <div class="container">
+            <div id="refresh" onclick="weatherApp.requestWeather(this.dataset.query, true)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="357.5 458.786 18.143 18.143"><path d="M16.864 11.643a.36.36 0 0 0-.357-.357h-2.143a.345.345 0 0 0-.335.257 9.054 9.054 0 0 1-.592 1.306 5.692 5.692 0 0 1-8.75 1.183l1.53-1.532a.71.71 0 0 0 .212-.5.719.719 0 0 0-.714-.714h-5A.719.719 0 0 0 0 12v5a.719.719 0 0 0 .714.714.71.71 0 0 0 .5-.212l1.44-1.44a8.5 8.5 0 0 0 14.2-4.342.19.19 0 0 0 .01-.077zm.279-8.929A.719.719 0 0 0 16.429 2a.71.71 0 0 0-.5.212l-1.451 1.44a8.666 8.666 0 0 0-5.9-2.366A8.519 8.519 0 0 0 .2 7.993v.078a.36.36 0 0 0 .357.357h2.222a.345.345 0 0 0 .335-.257 9.054 9.054 0 0 1 .592-1.306 5.716 5.716 0 0 1 8.761-1.194l-1.54 1.54a.71.71 0 0 0-.212.5.719.719 0 0 0 .714.714h5a.719.719 0 0 0 .714-.714z" transform="translate(358 458)"/></svg>
+            </div>
+            <h1><span class="req-data" data-model="res.item.condition.temp"></span>&deg;</h1>
+            <h2 class="req-data" data-model="res.item.condition.text"></h2>
+            <ul>
+                <li>
+                    Wind: <span class="req-data" data-model="res.wind.speed"></span><small>kph</small>
+                    <span id="wind_direction"><svg xmlns="http://www.w3.org/2000/svg" viewBox="287.773 452.183 45.905 45.905"><path class="a" d="M312.07 454.498a1.387 1.387 0 0 0-1.358-.972 1.333 1.333 0 0 0-1.007.407 1.321 1.321 0 0 0-.347.568l-10.101 30.305a1.426 1.426 0 0 0 .615 1.657 1.41 1.41 0 0 0 1.752-.205l9.092-9.092 9.091 9.092a1.41 1.41 0 0 0 1.752.205 1.723 1.723 0 0 0 .27-.205 1.41 1.41 0 0 0 .346-1.452z"/></svg></span>
+                </li>
+                <li>Humidity: <span class="req-data" data-model="res.atmosphere.humidity"></span>%</li>
+                <li>Visiblity <span class="req-data" data-model="res.atmosphere.visibility"></span><small>km</small></li>
+                <li>Pressure: <span class="req-data" data-model="res.atmosphere.pressure"></span><small>mb</small></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<%- include('organisms/foot') %>

@@ -1,0 +1,41 @@
+/* Color Profiles */
+$black:#333;
+$white: #f5f5f5;
+$gray: #777;
+$blue: #0CB4E7;
+$green: #26B349;
+$purple: #733CC0;
+
+/* Type Faces */
+$sans-serif: Helvetica, Arial, Trebuchet MS, sans-serif; 
+
+@keyframes slideFadeIn{
+    0%{
+        opacity: 0;
+        transform: translateX(2em);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0em);
+    }
+}
+
+@keyframes slideFadeOut{
+    0%{
+        opacity: 1;
+        transform: translateX(0em);
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(-2em);
+    }
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
