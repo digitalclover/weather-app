@@ -1,6 +1,7 @@
 var weatherApp = {
     req: new XMLHttpRequest(),
     res: null,
+    timer: null,
     results: document.getElementById('current'),
     error:document.getElementById('error'),
     windDirection: document.getElementById('wind_direction'),
@@ -31,7 +32,6 @@ var weatherApp = {
         this.req.onload = function(){
             var res = JSON.parse(self.req.responseText);
             if(res.query.results == null){
-                clearTimeout(self.timer);
                 self.renderError('No results were found, please try a different location.')
             }else{
                 self.res = res.query.results.channel;
@@ -51,7 +51,8 @@ var weatherApp = {
             this.error.classList.add('hide');
         }
         this.waiting = true;
-        this.timer();                        
+        var self = this;
+        this.timer = setTimeout(self.renderDelay.bind(null,self), 300);                       
     },
     checkTime: function(res){
         if(!this.waiting){
@@ -72,20 +73,19 @@ var weatherApp = {
         this.results.classList.add('visible');
     },
     renderError: function(message){
+        clearTimeout(this.timer);
         this.loader.classList.remove('visible');
         var view = document.getElementsByClassName('req-error')[0];
         view.innerHTML = message;
         this.error.classList.remove('hide');
         this.error.classList.add('visible');
     },
-    timer:function(){
-        var self = this;
-        setTimeout(function(){
-            self.waiting = false;
-            self.loader.classList.add('visible');
-            if(self.allowRender){
-                self.renderView(self.res);
-            }
-        },300);
+    renderDelay:function(self){
+        console.log(self);
+        self.waiting = false;
+        self.loader.classList.add('visible');
+        if(self.allowRender){
+            self.renderView(self.res);
+        }
     }
 }
